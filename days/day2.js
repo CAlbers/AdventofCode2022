@@ -4,11 +4,12 @@ let dataArray = data.split("\n");
 let results = [];
 let score = 0;
 let score2 = 0;
+let score3 = 0;
 //Rock Paper Scissors tourney
 
-//A = Rock
-//B = Paper
-//C = Scissors
+//A = Rock = 1
+//B = Paper = 2
+//C = Scissors = 3
 
 //Part1
 //X = Rock
@@ -16,15 +17,41 @@ let score2 = 0;
 //Z = Scissors
 
 //Part2
-//X = Lose
-//Y = Draw
-//Z = Win
+//X = Lose = 0
+//Y = Draw = 3
+//Z = Win = 6
 
-for (let i = 0; i < dataArray.length; i++) {
-	results[i] = dataArray[i].split(" ");
+//Reformed Dictionary
+let yourChoice = {X: 1, Y: 2, Z: 3}
+let result = {  
+    A : {X: 3, Y: 6, Z: 0},
+    B : {X: 0, Y: 3, Z: 6},
+    C : {X: 6, Y: 0, Z: 3},
+}
+let yourChoicePartTwo = {X: 0, Y: 3, Z: 6}
+let resultPartTwo = {  
+    A : {X: 3, Y: 1, Z: 2},
+    B : {X: 1, Y: 2, Z: 3},
+    C : {X: 2, Y: 3, Z: 1},
 }
 
-//Decide what to pick
+//Calculate Part 1
+for (let i = 0; i < dataArray.length; i++) {
+	let matchData = dataArray[i].split(" ");
+    score += yourChoice[matchData[1]] + result[matchData[0]][matchData[1]];
+}
+let start = performance.now();
+//Calculate Part 2
+for (let i = 0; i < dataArray.length; i++) {
+	let matchData = dataArray[i].split(" ");
+    score2 += yourChoicePartTwo[matchData[1]] + resultPartTwo[matchData[0]][matchData[1]];
+}
+
+let end = performance.now();
+console.log(`Execution time: ${end - start} ms`);
+
+//===== Dirty non scalable but blazingly fast =====\\
+start = performance.now();
 results.forEach((entry) => {
 	//Check for the outcome
 	if (entry[0] == "A") {
@@ -127,4 +154,5 @@ results.forEach((entry) => {
     }
 });
 
-console.log(dataArray);
+end = performance.now();
+console.log(`Execution time: ${end - start} ms`);

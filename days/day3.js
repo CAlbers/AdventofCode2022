@@ -15,7 +15,6 @@ function partOne(){
     let start = performance.now();
     itemPriorityTotal = 0;
     for (let i = 0; i < backpackInvs.length; i++) {
-        backpackInvs[i].
         backpackInvs[i] = split(backpackInvs[i],backpackInvs[i].length/2);
         for(var key in itemPriority){
             if(backpackInvs[i][0].includes(key))

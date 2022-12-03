@@ -20,4 +20,3 @@ console.log(splitting.split("all"));
 console.log(dict2[1]["C"]);
 
 console.log(dict.A);
-

@@ -13,6 +13,10 @@ answers.forEach(answer => {
     score += dict[answer]
 });
 
+let splitting = "Hallo";
+
+console.log(splitting.split("all"));
+
 console.log(dict2[1]["C"]);
 
 console.log(dict.A);
